@@ -10,7 +10,7 @@ from keras.applications.vgg16 import preprocess_input
 app = Flask(__name__)
 model = keras.models.load_model('n_model.h5')
 
-@app.route("/predict", methods=['GET'])
+@app.route("/predict", methods=['POST'])
 def predict():
     if request.method == "POST":
         # validate images
