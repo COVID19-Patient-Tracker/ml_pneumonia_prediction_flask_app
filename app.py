@@ -14,7 +14,7 @@ model = keras.models.load_model('n_model.h5')
 def predict():
     if request.method == "POST":
         # validate images
-        f = request.files['image']
+        imagefile = request.files['image']
         imafe_path = "./images/" + imagefile.filename
         imagefile.save(path)
         image = load_img(image_path, target_size(224,224))
