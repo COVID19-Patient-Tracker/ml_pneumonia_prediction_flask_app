@@ -25,7 +25,7 @@ def predict():
         # convert image into np array
         # and return prediction
         # convert image in to numpy array
-    return prediction
+    return "hello world"
 
 if __name__ == "__main__":
     app.run(port=3000,debug=True)
