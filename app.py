@@ -5,7 +5,7 @@ from flask import Flask,request
 from tensorflow import keras
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
-from keras.applcation.vgg16 import prerpocess_input
+from keras.application.vgg16 import preprocess_input
 
 app = Flask(__name__)
 model = keras.models.load_model('n_model')
