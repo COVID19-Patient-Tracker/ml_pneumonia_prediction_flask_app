@@ -17,7 +17,7 @@ def predict():
         imagefile = request.files['image']
         image_path = "./images/" + imagefile.filename
         imagefile.save(image_path)
-        image = load_img(image_path, target_size(224,224))
+        image = load_img(image_path, target_size=(224,224))
         image = image_to_array(image)
         image = image.reshape(1,image.shape[0],image.shape[1],image.shape[2])
         image = preprocess_input(image)
