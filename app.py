@@ -8,7 +8,7 @@ from keras.preprocessing.image import img_to_array
 from keras.applications.vgg16 import preprocess_input
 
 app = Flask(__name__)
-model = keras.models.load_model('n_model')
+model = keras.models.load_model('n_model.h5')
 
 @app.route("/predict", methods=['GET'])
 def predict():
