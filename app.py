@@ -15,8 +15,8 @@ def predict():
     if request.method == "POST":
         # validate images
         imagefile = request.files['image']
-        imafe_path = "./images/" + imagefile.filename
-        imagefile.save(path)
+        image_path = "./images/" + imagefile.filename
+        imagefile.save(image_path)
         image = load_img(image_path, target_size(224,224))
         image = image_to_array(image)
         image = image.reshape(1,image.shape[0],image.shape[1],image.shape[2])
