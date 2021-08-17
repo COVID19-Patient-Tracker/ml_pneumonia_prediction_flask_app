@@ -12,7 +12,6 @@ model = keras.models.load_model('n_model.h5')
 
 app = Flask(__name__)
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
-app.config['UPLOAD_PATH'] = 'uploads'
 
 @app.route("/predict", methods=['POST'])
 def predict():
