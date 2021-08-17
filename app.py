@@ -6,6 +6,7 @@ from tensorflow import keras
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 from keras.applications.vgg16 import preprocess_input
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 model = keras.models.load_model('n_model.h5')
