@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 # Pneumonia prediction API
 
 Pneumonia prediction API is a API that gives a prediction if someone is positive to pneumonia or not, using XR images.
