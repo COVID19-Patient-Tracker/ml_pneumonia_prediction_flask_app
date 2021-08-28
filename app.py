@@ -19,7 +19,7 @@ def predict():
     if request.method == "POST":
         # validate images
         imagefile = request.files['image']
-        nameOfFile = secure_filename(uploaded_file.filename)
+        nameOfFile = secure_filename(imagefile.filename)
         if nameOfFile != '':
             file_ext = os.path.splitext(nameOfFile)[1]
             if file_ext not in app.config['UPLOAD_EXTENSIONS']:
