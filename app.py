@@ -13,7 +13,7 @@ app = Flask(__name__)
 model = keras.models.load_model('n_model.h5')
 
 app = Flask(__name__)
-app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
+app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif','jpeg']
 
 @app.route("/predict", methods=['POST'])
 def predict():
@@ -24,6 +24,7 @@ def predict():
         if nameOfFile != '':
             file_ext = os.path.splitext(nameOfFile)[1]
             if file_ext not in app.config['UPLOAD_EXTENSIONS']:
+                return "invalid file format."
                 abort(400)
             image_path = "./images/" + imagefile.filename
             imagefile.save(image_path)
