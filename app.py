@@ -1,7 +1,7 @@
 
 
 
-from flask import Flask,request
+from flask import Flask,request,abort
 from tensorflow import keras
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -24,7 +24,6 @@ def predict():
         if nameOfFile != '':
             file_ext = os.path.splitext(nameOfFile)[1]
             if file_ext not in app.config['UPLOAD_EXTENSIONS']:
-                return "invalid file format."
                 abort(400)
             image_path = "./images/" + imagefile.filename
             imagefile.save(image_path)
