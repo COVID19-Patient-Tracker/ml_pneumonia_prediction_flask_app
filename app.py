@@ -24,7 +24,8 @@ def predict():
         if nameOfFile != '':
             file_ext = os.path.splitext(nameOfFile)[1]
             if file_ext not in app.config['UPLOAD_EXTENSIONS']:
-                abort(400)
+                # abort(400)
+                return "Invalid file format."
             image_path = "./images/" + imagefile.filename
             imagefile.save(image_path)
             image = load_img(image_path, target_size=(224,224))
