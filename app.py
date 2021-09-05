@@ -1,7 +1,7 @@
 
 
 
-from flask import Flask,request,abort
+from flask import Flask,request
 from tensorflow import keras
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
