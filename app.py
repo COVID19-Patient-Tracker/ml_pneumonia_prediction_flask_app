@@ -7,6 +7,7 @@ from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 from keras.applications.vgg16 import preprocess_input
 from werkzeug.utils import secure_filename
+from flask_cors import CORS
 import os
 
 app = Flask(__name__)
@@ -16,6 +17,7 @@ app = Flask(__name__)
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif','.jpeg']
 
 @app.route("/predict", methods=['POST'])
+@cross_origin()
 def predict():
     if request.method == "POST":
         # validate images
