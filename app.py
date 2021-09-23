@@ -7,11 +7,9 @@ from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 from keras.applications.vgg16 import preprocess_input
 from werkzeug.utils import secure_filename
-from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-CORS(app)
 model = keras.models.load_model('n_model.h5')
 
 app = Flask(__name__)
