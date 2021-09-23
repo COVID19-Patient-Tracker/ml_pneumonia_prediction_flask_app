@@ -11,13 +11,13 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
+CORS(app)
 model = keras.models.load_model('n_model.h5')
 
 app = Flask(__name__)
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif','.jpeg']
 
 @app.route("/predict", methods=['POST'])
-@cross_origin()
 def predict():
     if request.method == "POST":
         # validate images
