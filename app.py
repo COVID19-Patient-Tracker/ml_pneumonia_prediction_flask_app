@@ -16,7 +16,6 @@ model = keras.models.load_model('n_model.h5')
 
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
-app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin: *'
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif','.jpeg']
 
 @app.route("/predict", methods=['POST'])
