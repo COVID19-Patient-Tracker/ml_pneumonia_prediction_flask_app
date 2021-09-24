@@ -18,7 +18,6 @@ app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif','.jpeg']
 
-from flask import 
 
 flask_app = Flask(__name__)
 
