@@ -21,7 +21,7 @@ def api_create_order():
         return _build_cors_preflight_response()
     elif(request.method == "POST"):
         arr = predict()
-        return _corsify_actual_response(arr)
+        return arr
     else:
         raise RuntimeError("Weird - don't know how to handle method {}".format(request.method))
 
