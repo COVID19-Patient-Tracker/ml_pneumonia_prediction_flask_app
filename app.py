@@ -1,7 +1,7 @@
 
 
 
-from flask import Flask,request
+from flask import Flask,request,cross_origin
 from tensorflow import keras
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -20,6 +20,7 @@ app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin: *'
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif','.jpeg']
 
 @app.route("/predict", methods=['POST'])
+@cross_origin()
 def predict():
     if request.method == "POST":
         # validate images
