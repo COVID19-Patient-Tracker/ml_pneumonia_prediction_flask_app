@@ -1,7 +1,7 @@
 
 
 
-from flask import Flask,request, make_response
+from flask import Flask,request, make_response, json, Response
 from tensorflow import keras
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -21,7 +21,7 @@ def api_create_order():
         return _build_cors_preflight_response()
     elif(request.method == "POST"):
         arr = predict()
-        return arr
+        return Response(json.dumps(arr),  mimetype='application/json')
     else:
         raise RuntimeError("Weird - don't know how to handle method {}".format(request.method))
 
@@ -56,7 +56,7 @@ def predict():
             # convert image into np array
             # and return prediction
             # convert image in to numpy array
-            result = {"normal":prediction[0][0],"pneumoinia":prediction[0][1]}
+            result = [{"normal":prediction[0][0],"pneumoinia":prediction[0][1]}]
     return result
 
 if __name__ == "__main__":
