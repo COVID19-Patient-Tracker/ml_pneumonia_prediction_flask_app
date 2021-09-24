@@ -9,22 +9,19 @@ from keras.applications.vgg16 import preprocess_input
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import os
-
 app = Flask(__name__)
 CORS(app)
 model = keras.models.load_model('n_model.h5')
-
-app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif','.jpeg']
 
-
-flask_app = Flask(__name__)
-
-@flask_app.route("/api/orders", methods=["POST", "OPTIONS"])
+@app.route("/predict", methods=["POST", "OPTIONS"])
 def api_create_order():
     if request.method == "OPTIONS": # CORS preflight
         return _build_cors_preflight_response()
+    elif(request.method == "POST"):
+        arr = predict()
+        return _corsify_actual_response(arr)
     else:
         raise RuntimeError("Weird - don't know how to handle method {}".format(request.method))
 
@@ -39,7 +36,6 @@ def _corsify_actual_response(response):
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
-@app.route("/predict", methods=['POST'])
 def predict():
     if request.method == "POST":
         # validate images
@@ -56,7 +52,7 @@ def predict():
             image = img_to_array(image)
             image = image.reshape(1,image.shape[0],image.shape[1],image.shape[2])
             image = preprocess_input(image)
-            prediction = model.predict(image)
+            prediction = model.predict(image/255)
             # convert image into np array
             # and return prediction
             # convert image in to numpy array
