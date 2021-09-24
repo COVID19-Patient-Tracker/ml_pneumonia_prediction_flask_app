@@ -56,7 +56,8 @@ def predict():
             # convert image into np array
             # and return prediction
             # convert image in to numpy array
-    return str(prediction)
+            result = {"normal":prediction[0][0],"pneumoinia":prediction[0][1]}
+    return result
 
 if __name__ == "__main__":
     app.run(port=3000,debug=True)
